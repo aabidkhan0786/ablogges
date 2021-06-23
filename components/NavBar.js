@@ -35,7 +35,7 @@ export default function NavBar({user}) {
     <>
 <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" style={{"height":"80px"}}>
   <div className="container-fluid">
-    <Link className="navbar-brand mx-5"  href="/" ><a class="btn btn-info btn-lg">aBlogges</a></Link><h3 className="text-capitalize pt-2 text-white">{user &&`,${user.displayName}`}</h3>
+    <Link className="navbar-brand mx-5"  href="/" ><a class="btn btn-info ">aBlogges</a></Link><h3 className="text-capitalize pt-2 text-white">{user &&`,${user.displayName}`}</h3>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

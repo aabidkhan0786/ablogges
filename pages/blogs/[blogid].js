@@ -43,7 +43,7 @@ export default function blogId({blog,user,allComments}){
             <h2 className="card-text text-center my-5  py-3">Created On -<small className="text-primary">{new Date(blog.createdAt).toDateString()}</small></h2>
           </div>
           <div className="my-3">
-                <h1 className="text-center"><u>Make A Comment</u></h1>
+                <h2 className="text-center"><u>Make A Comment</u></h2>
                 {
                   user ? 
                   <>
@@ -56,7 +56,7 @@ export default function blogId({blog,user,allComments}){
     </>}
 <input className="make_comment border-primary my-4" value={comment} onChange={(e)=>setComment(e.target.value)} placeholder="add comment" />
 <center>
-    <button className="btn btn-lg btn-outline-warning" onClick={()=>makeComment()} >Comment</button>
+    <button className="btn  btn-outline-warning" onClick={()=>makeComment()} >Comment</button>
 </center>
 <hr/>
 {
