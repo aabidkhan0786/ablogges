@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300&family=Kirang+Haerang&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+    font-family: 'Fraunces', serif;
 }
 
 a {
@@ -13,4 +16,39 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.navbar Link {
+  font-family: 'Kirang Haerang', cursive;
+  background-color: red;
+}
+
+.login_blog{
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  position: relative;
+  top: 200px;
+}
+.create_blog{
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  position: relative;
+  top: 100px;
+}
+
+.card .read_more{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.make_comment{
+  width:100%;
+  border:none;
+  outline:none;
+  border-bottom: 2px solid;
+  font-size: 20px;
 }
