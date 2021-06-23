@@ -65,7 +65,7 @@ export default function Home({ allBlogs }) {
                  Loading Blogs...
                </button>:
 
-                <button className="btn btn-lg   btn-outline-primary" onClick={()=>loadMore()} >LOAD MORE BLOGS!</button>         
+                <button className="btn btn-md  btn-outline-primary" onClick={()=>loadMore()} >LOAD MORE BLOGS!</button>         
 
                }
              </center>

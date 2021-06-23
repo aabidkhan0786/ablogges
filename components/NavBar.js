@@ -33,9 +33,9 @@ export default function NavBar({user}) {
 
   return (
     <>
-<nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" style={{"height":"80px"}}>
+<nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" style={{"height":"70px"}}>
   <div className="container-fluid">
-    <Link className="navbar-brand mx-5"  href="/" ><a class="btn btn-info ">aBlogges</a></Link><h3 className="text-capitalize pt-2 text-white">{user &&`,${user.displayName}`}</h3>
+    <Link className="navbar-brand mx-5"  href="/" ><a class="btn btn-md btn-info ">aBlogges</a></Link><h4 className="text-capitalize pt-2 text-white">{user &&`,${user.displayName}`}</h4>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -47,15 +47,15 @@ export default function NavBar({user}) {
           user ?
           <>
         <li className="nav-item mx-3 py-2">
-          <Link href="/createblog"><a  class="btn btn-outline-light">Create</a></Link>
+          <Link href="/createblog"><a  class="btn btn-sm btn-outline-light">Create</a></Link>
         </li>
         <li className="nav-item mx-3 py-2">
-          <button type="button" onClick={() =>signOut()} class="btn btn-danger">LogOut</button>
+          <button type="button" onClick={() =>signOut()} class="btn btn-sm  btn-danger">LogOut</button>
         </li>
         </>
         :
         <li className="nav-item mx-3 py-2">
-          <Link href="/login"><a className="btn btn-outline-secondary" color="inherit">LogIn</a></Link>
+          <Link href="/login"><a className="btn btn-sm  btn-outline-secondary" color="inherit">LogIn</a></Link>
         </li>
         }
 
