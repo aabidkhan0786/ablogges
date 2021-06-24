@@ -9,7 +9,7 @@ export default function LogIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [alerts, setAlerts] = useState(false);
-    const [msg, setMsg] = useState('')
+    const [msg, setMsg] = useState('processing...')
 
 
     console.log(email, password);
@@ -37,7 +37,7 @@ export default function LogIn() {
                     {alerts && <>
                         <div class="alert alert-dismissible alert-primary">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            <strong> {msg}</strong>
+                            <strong> {msg} </strong>
                         </div>
                     </>}
                             <div className="form-group">
