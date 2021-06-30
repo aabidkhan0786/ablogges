@@ -35,7 +35,7 @@ export default function LogIn() {
             <div className="row-fluid login_blog">
                 <div className="col-12 col-lg-8 mx-auto shadow-lg p-3 mb-5 bg-body rounded  ">
                     {alerts && <>
-                        <div class="alert alert-dismissible alert-primary">
+                        <div className="alert alert-dismissible alert-primary">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             <strong> {msg} </strong>
                         </div>

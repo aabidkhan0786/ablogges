@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Button, Typography } from '@material-ui/core'
@@ -8,11 +8,11 @@ import LockIcon from '@material-ui/icons/Lock';
 import MailIcon from '@material-ui/icons/Mail';
 // import {login} from "../images/login.png"
 import Link from "next/link"
-import {auth} from "../firebase"
-import {storage,db,serverTimestamp} from "../firebase"
+import { auth } from "../firebase"
+import { storage, db, serverTimestamp } from "../firebase"
 import TitleIcon from '@material-ui/icons/Title';
 import CreateIcon from '@material-ui/icons/Create';
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import router from 'next/router';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,79 +21,79 @@ const useStyles = makeStyles((theme) => ({
     },
     textField: {
         width: '25ch',
-      },
+    },
 }));
 
-export default function CreateBlog({user}) {
-    const [title,setTitle] = useState("");
-    const [body,setBody] = useState("");
-    const [img,setImg] = useState(null);
-    const [url,setUrl] = useState("");
-    const [alerts,setAlerts] = useState(false);
-    const [msgs,setMsgs] = useState('');
-  
-   
-    useEffect(()=>{
-        if(url){
+export default function CreateBlog({ user }) {
+    const [title, setTitle] = useState("");
+    const [body, setBody] = useState("");
+    const [img, setImg] = useState(null);
+    const [url, setUrl] = useState("");
+    const [alerts, setAlerts] = useState(false);
+    const [msgs, setMsgs] = useState('');
+
+
+    useEffect(() => {
+        if (url) {
             try {
                 db.collection("ablogs").add({
                     title,
                     body,
-                    imageUrl:url,
-                    createdAt:serverTimestamp(),
-                    postedBy:user.uid,
-                    createdBy:user.displayName
+                    imageUrl: url,
+                    createdAt: serverTimestamp(),
+                    postedBy: user.uid,
+                    createdBy: user.displayName
                 })
                 setMsgs("Post Created Successfully!")
                 setAlerts(true)
                 router.push('/')
             } catch (error) {
-              setMsgs(error.message)
-              setAlerts(true)
+                setMsgs(error.message)
+                setAlerts(true)
             }
         }
-    },[url])
+    }, [url])
 
-    const submitDetails = ()=>{
+    const submitDetails = () => {
         // e.preventDefault();
-        if(!title || !body || !img){
-          setMsgs("Please add all fields!")
-          setAlerts(true)
+        if (!title || !body || !img) {
+            setMsgs("Please add all fields!")
+            setAlerts(true)
             return
         }
         var uploadTask = storage.ref().child(`images/${uuidv4()}`).put(img);
 
 
-        uploadTask.on('state_changed', 
-          (snapshot) => {
+        uploadTask.on('state_changed',
+            (snapshot) => {
 
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-            if(progress == "100") 
-            setMsgs("Pic Uploaded!")
-            setAlerts(true)
-          }, 
-          (error) => {
-            // Handle unsuccessful uploads
-            setMsgs(error.message)
-              setAlerts(true)
-          }, 
-          () => {
-            
-            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-              console.log('File available at', downloadURL);
-              setUrl(downloadURL)
-            });
-          }
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                if (progress == "100")
+                    setMsgs("Pic Uploaded!")
+                setAlerts(true)
+            },
+            (error) => {
+                // Handle unsuccessful uploads
+                setMsgs(error.message)
+                setAlerts(true)
+            },
+            () => {
+
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    console.log('File available at', downloadURL);
+                    setUrl(downloadURL)
+                });
+            }
         );
     }
 
     return (
         <>
-         
-<div className="row-fluid login_blog">
+
+            <div className="row-fluid login_blog">
                 <div className="col-12 col-lg-8 mx-auto shadow-lg p-3 mb-5 bg-body rounded  ">
-                {alerts && <>
+                    {alerts && <>
                         <div class="alert alert-dismissible alert-primary">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             <strong> {msgs}</strong>
@@ -103,20 +103,26 @@ export default function CreateBlog({user}) {
                         <h1 className="text-center">Create Your Blog</h1>
                         <label className="form-label mt-4">Welcome to aBlogges!</label>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" id="floatingInput"  onChange={e=>setTitle(e.target.value)} placeholder="name@example.com" />
+                            <input type="text" className="form-control" id="floatingInput" onChange={e => setTitle(e.target.value)} placeholder="name@example.com" />
                             <label for="floatingInput">Add Title</label>
                         </div>
                         <div className="form-floating">
-                            <input type="text" className="form-control"  onChange={e=>setBody(e.target.value)} id="floatingPassword" placeholder="Password" />
+                            <input type="text" className="form-control" onChange={e => setBody(e.target.value)} id="floatingPassword" placeholder="Password" />
                             <label for="floatingPassword">Add Content</label>
                         </div>
                         <div className="form-group">
-      <label for="formFile" className="form-label mt-4">Select Image</label>
-      <input class="form-control" type="file" id="formFile" onChange={e=>setImg(e.target.files[0])}/>
-
-    </div>
+                            <label for="formFile" className="form-label mt-4">Select Image</label>
+                            <input class="form-control" type="file" id="formFile" accept="/image/*" onChange={e => setImg(e.target.files[0])} />
+                        </div>
+                        {
+                            img ? 
+                            <>
+                                 <h3>Image Preview</h3>
+                                <img class="img-fluid" src={img?URL.createObjectURL(img):""}/>
+                            </>:""
+                        }
                         <div className="d-grid gap-2 my-3">
-                            <button className="btn btn-lg   btn-outline-success" onClick={()=>submitDetails()}  type="button">CREATE</button>
+                            <button className="btn btn-lg   btn-outline-success" onClick={() => submitDetails()} type="button">CREATE</button>
                         </div>
 
                     </div>
