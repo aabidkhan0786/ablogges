@@ -66,7 +66,6 @@ export default function CreateBlog({ user }) {
 
         uploadTask.on('state_changed',
             (snapshot) => {
-
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('Upload is ' + progress + '% done');
                 if (progress == "100")
@@ -115,11 +114,11 @@ export default function CreateBlog({ user }) {
                             <input class="form-control" type="file" id="formFile" accept="/image/*" onChange={e => setImg(e.target.files[0])} />
                         </div>
                         {
-                            img ? 
-                            <>
-                                 <h3>Image Preview</h3>
-                                <img class="img-fluid" src={img?URL.createObjectURL(img):""}/>
-                            </>:""
+                            img ?
+                                <>
+                                    <h3>Image Preview</h3>
+                                    <img class="img-fluid" src={img ? URL.createObjectURL(img) : ""} />
+                                </> : ""
                         }
                         <div className="d-grid gap-2 my-3">
                             <button className="btn btn-lg   btn-outline-success" onClick={() => submitDetails()} type="button">CREATE</button>

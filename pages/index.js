@@ -43,7 +43,6 @@ export default function Home({ allBlogs }) {
                 <h5 className="card-title">{blog.title}</h5>
                   <p className="card-text read_more"> {blog.body}</p>
                     <h4 className="float-right">
-                      
                       <Link href={`/blogs/${blog.id}`} color="primary"><a className="text-warning px-2">Read More... <i className="fab fa-readme"></i></a></Link>
                       </h4>
                   {/* <p className="card-text float-right"><small className="text-muted">Last updated 3 mins ago</small></p> */}
@@ -60,7 +59,7 @@ export default function Home({ allBlogs }) {
              :
              <center>
                {
-                 loading ? <button className="btn btn-lg   btn-outline-primary"  disabled>
+                 loading ? <button className="btn btn-md   btn-outline-primary"  disabled>
                  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                  Loading Blogs...
                </button>:
