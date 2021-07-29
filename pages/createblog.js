@@ -61,8 +61,8 @@ export default function CreateBlog({ user }) {
             setAlerts(true)
             return
         }
-        var uploadTask = storage.ref().child(`images/${uuidv4()}`).put(img);
 
+        var uploadTask = storage.ref().child(`images/${uuidv4()}`).put(img);
 
         uploadTask.on('state_changed',
             (snapshot) => {
@@ -111,19 +111,18 @@ export default function CreateBlog({ user }) {
                         </div>
                         <div className="form-group">
                             <label for="formFile" className="form-label mt-4">Select Image</label>
-                            <input class="form-control" type="file" id="formFile" accept="/image/*" onChange={e => setImg(e.target.files[0])} />
+                            <input className="form-control" type="file" id="formFile" accept="/image/*" onChange={e => setImg(e.target.files[0])} />
                         </div>
                         {
                             img ?
                                 <>
                                     <h3>Image Preview</h3>
-                                    <img class="img-fluid" src={img ? URL.createObjectURL(img) : ""} />
+                                    <img className="img-fluid" src={img ? URL.createObjectURL(img) : ""} />
                                 </> : ""
                         }
                         <div className="d-grid gap-2 my-3">
                             <button className="btn btn-lg   btn-outline-success" onClick={() => submitDetails()} type="button">CREATE</button>
                         </div>
-
                     </div>
                 </div>
             </div>

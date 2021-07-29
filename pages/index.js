@@ -34,10 +34,9 @@ export default function Home({ allBlogs }) {
       {
         blogs.map(blog => (
           <div className="row-fluid create_blog">
-            <div className="col-12 col-lg-8 mx-auto shadow-lg p-3 mb-5 bg-body rounded  ">
-
+            <div className="col-12 col-lg-8 mx-auto shadow-lg p-3 mb-5 bg-body rounded">
               <div className="card">
-                  <h4 className="card-title text-center text-capitalize text-warning my-2">{blog.createdBy}</h4>
+                  <h4 className="card-title text-center text-capitalize text-warning my-2">{blog.createdBy ? blog.createdBy : "aBlogges User"}</h4>
                 <img src={blog.imageUrl} className="card-img-bottom" alt="blog_img" />
                 <div className="card-body">
                 <h5 className="card-title">{blog.title}</h5>
@@ -63,9 +62,7 @@ export default function Home({ allBlogs }) {
                  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                  Loading Blogs...
                </button>:
-
                 <button className="btn btn-md  btn-outline-primary" onClick={()=>loadMore()} >LOAD MORE BLOGS!</button>         
-
                }
              </center>
              }
