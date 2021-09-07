@@ -3,6 +3,7 @@ import { useState } from "react";
 import { db } from "../../firebase"
 import { useRouter } from "next/router"
 import Link from "next/link"
+
 export default function blogId({ blog, user, allComments }) {
   const [comment, setComment] = useState("");
   const [viewCom, SetViewCom] = useState(allComments)
@@ -15,7 +16,6 @@ export default function blogId({ blog, user, allComments }) {
     if (comment === "") {
       setMsg("Please add a comment!")
       setAlerts(true)
-      // Router.push("/")
     } else {
       await db.collection("ablogs").doc(blogid).collection('comments').add({
         text: comment,
@@ -43,7 +43,7 @@ export default function blogId({ blog, user, allComments }) {
             <h2 className="card-text text-center my-5  py-3">Created On -<small className="text-primary">{new Date(blog.createdAt).toDateString()}</small></h2>
           </div>
           <div className="my-3">
-            <h2 className="text-center"><u>Make A Comment</u></h2>
+            <h2 className="text-center"><u>Add A Comment</u></h2>
             {
               user ?
                 <>
@@ -61,14 +61,12 @@ export default function blogId({ blog, user, allComments }) {
                   <hr />
                   {
                     viewCom.map(com => (
-                      <h3 className="px-2 text-primary text-capitalize">{com.name}: <span className="text-dark">{com.text}</span> </h3>
+                      <h4 className="px-2 my-2 text-primary text-capitalize">{com.name}: <span className="text-dark">{com.text}</span> </h4>
                     ))
                   }
                 </> :
                 <>
-
                   <h4 className="text-center text-capitalize my-2"><Link href="/login" color="primary"><a className="text-info">LogIn</a></Link> to make comment</h4>
-
                 </>
             }
           </div>

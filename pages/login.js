@@ -33,7 +33,7 @@ export default function LogIn() {
     return (
         <>
             <div className="row-fluid login_blog">
-                <div className="col-12 col-lg-8 mx-auto shadow-lg p-3 mb-5 bg-body rounded  ">
+                <div className="col-11 col-lg-8 mx-auto shadow-lg p-3 mb-5 bg-body rounded  ">
                     {alerts && <>
                         <div className="alert alert-dismissible alert-primary">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -41,7 +41,7 @@ export default function LogIn() {
                         </div>
                     </>}
                             <div className="form-group">
-                                <h1 className="text-center">LogIn With Us!</h1>
+                                <h1 className="text-center"><u>LogIn With Us!</u></h1>
                                 <label className="form-label mt-4">Welcome to aBlogges!</label>
                                 <div className="form-floating mb-3">
                                     <input type="email" className="form-control" id="floatingInput" onChange={e => setEmail(e.target.value)} placeholder="name@example.com" />

@@ -90,24 +90,24 @@ export default function CreateBlog({ user }) {
     return (
         <>
 
-            <div className="row-fluid login_blog">
-                <div className="col-12 col-lg-8 mx-auto shadow-lg p-3 mb-5 bg-body rounded  ">
+            <div className="row-fluid create_blog">
+                <div className="col-11 col-lg-8 mx-auto shadow-lg p-3 mb-3 bg-body rounded  ">
                     {alerts && <>
                         <div class="alert alert-dismissible alert-primary">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            <strong> {msgs}</strong>
+                            <strong>{msgs}</strong>
                         </div>
                     </>}
                     <div className="form-group">
                         <h1 className="text-center">Create Your Blog</h1>
-                        <label className="form-label mt-4">Welcome to aBlogges!</label>
+                        <label className="form-label mt-4 ">Welcome to aBlogges!</label>
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" id="floatingInput" onChange={e => setTitle(e.target.value)} placeholder="name@example.com" />
                             <label for="floatingInput">Add Title</label>
                         </div>
-                        <div className="form-floating">
-                            <input type="text" className="form-control" onChange={e => setBody(e.target.value)} id="floatingPassword" placeholder="Password" />
-                            <label for="floatingPassword">Add Content</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" onChange={e => setBody(e.target.value)} id="floatingTextarea2" style={{ height: "100px" }}></textarea>
+                            <label for="floatingTextarea2">Write Content</label>
                         </div>
                         <div className="form-group">
                             <label for="formFile" className="form-label mt-4">Select Image</label>
@@ -116,7 +116,7 @@ export default function CreateBlog({ user }) {
                         {
                             img ?
                                 <>
-                                    <h3>Image Preview</h3>
+                                    <h3>Image Preview:</h3>
                                     <img className="img-fluid" src={img ? URL.createObjectURL(img) : ""} />
                                 </> : ""
                         }

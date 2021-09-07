@@ -7,6 +7,8 @@ import { auth } from '../firebase'
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
+  const [align, setAlign] = useState(true);
+
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -17,6 +19,12 @@ function MyApp({ Component, pageProps }) {
     });
 
   }, [])
+
+const alignType = (type)=>{
+  console.log(type);  
+  setAlign(type)
+}
+
   return (
     <>
       <Head>
@@ -29,8 +37,8 @@ function MyApp({ Component, pageProps }) {
 
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
       </Head>
-      <NavBar user={user} />
-      <Component {...pageProps} user={user} />
+      <NavBar user={user} alignType={alignType} />
+      <Component {...pageProps} user={user} align={align} />
     </>
   )
 }

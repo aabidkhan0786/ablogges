@@ -7,6 +7,8 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
     font-family: 'Fraunces', serif;
+    overflow-x: hidden;
+    height:100vh;
 }
 
 a {
@@ -23,12 +25,26 @@ a {
   background-color: red;
 }
 
+.create_blog{
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  position: relative;
+  top: 98px;
+}
 .login_blog{
   display: flex;
   justify-content: center;
   place-items: center;
   position: relative;
-  top: 200px;
+  top: 150px;
+}
+.signup_blog{
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  position: relative;
+  top: 105px;
 }
 .create_blog{
   display: flex;
@@ -51,4 +67,43 @@ a {
   outline:none;
   border-bottom: 2px solid;
   font-size: 20px;
+}
+
+
+.short_note_list{
+  width:50%;
+  margin-left:25px;
+  border: 2px solid #f0ad4e; 
+  border-bottom-right-radius: 35px ;
+  border-bottom-left-radius: 35px ;
+}
+
+.short_note{  
+  width:78%;
+  /* float:left; */
+  margin-left:25px;
+  border: 2px solid #f0ad4e; 
+  border-bottom-right-radius: 35px ;
+  border-bottom-left-radius: 35px ;
+}
+
+.child_div{
+  width:50%;
+  float:left;
+  display: flex;
+  justify-content: center;
+}
+
+.child_div_list{
+  width:100%;
+  /* float:left; */
+  display: flex;
+  justify-content: center;
+}
+
+
+@media screen and (max-width: 550px) {
+  .hide{
+    display: none;
+  }
 }
