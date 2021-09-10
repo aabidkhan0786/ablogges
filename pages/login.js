@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import {login} from "../images/login.png"
 import Link from "next/link"
 import { auth } from "../firebase"
 import Router from 'next/router'

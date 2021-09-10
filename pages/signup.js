@@ -1,12 +1,4 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { Button, Typography } from '@material-ui/core'
-import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import LockIcon from '@material-ui/icons/Lock';
-import MailIcon from '@material-ui/icons/Mail';
-// import {login} from "../images/login.png"
 import Link from "next/link"
 import { auth } from "../firebase"
 import Router from 'next/router'

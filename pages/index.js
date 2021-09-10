@@ -2,7 +2,6 @@ import { db } from "../firebase"
 import Link from "next/link"
 import { useEffect, useState } from 'react';
 
-
 export default function Home({ allBlogs, align }) {
   const [blogs, setBlogs] = useState(allBlogs);
   const [end, setEnd] = useState(false);
@@ -34,7 +33,7 @@ export default function Home({ allBlogs, align }) {
             <div className={align ? "col-lg-8 col-10 my-4 rounded shadow-lg p-3  ": "col-lg-5 col-10 my-3  shadow-lg mx-4  p-3 bg-body rounded"}>
               <div className="card">
                 <h4 className="card-title text-center text-capitalize text-warning ">{blog.createdBy ? blog.createdBy : "aBlogges User"}</h4>
-                <img src={blog.imageUrl} className="card-img-bottom" alt="blog_img" loading="lazy" />
+                <img src={blog.imageUrl} className="card-img-bottom"  alt="blog_img" loading="lazy" />
                 <div className="card-body">
                   <h5 className="card-title">{blog.title}</h5>
                   <p className="card-text read_more">{blog.body}</p>

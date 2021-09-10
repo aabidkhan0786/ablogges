@@ -1,4 +1,3 @@
-import react from "react"
 import { useState } from "react";
 import { db } from "../../firebase"
 import { useRouter } from "next/router"

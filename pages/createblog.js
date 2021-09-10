@@ -1,28 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { Button, Typography } from '@material-ui/core'
-import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import LockIcon from '@material-ui/icons/Lock';
-import MailIcon from '@material-ui/icons/Mail';
-// import {login} from "../images/login.png"
 import Link from "next/link"
 import { auth } from "../firebase"
 import { storage, db, serverTimestamp } from "../firebase"
-import TitleIcon from '@material-ui/icons/Title';
-import CreateIcon from '@material-ui/icons/Create';
 import { v4 as uuidv4 } from 'uuid'
 import router from 'next/router';
 
-const useStyles = makeStyles((theme) => ({
-    margin: {
-        margin: theme.spacing(2),
-    },
-    textField: {
-        width: '25ch',
-    },
-}));
 
 export default function CreateBlog({ user }) {
     const [title, setTitle] = useState("");
@@ -61,9 +43,7 @@ export default function CreateBlog({ user }) {
             setAlerts(true)
             return
         }
-
         var uploadTask = storage.ref().child(`images/${uuidv4()}`).put(img);
-
         uploadTask.on('state_changed',
             (snapshot) => {
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -78,7 +58,6 @@ export default function CreateBlog({ user }) {
                 setAlerts(true)
             },
             () => {
-
                 uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
                     console.log('File available at', downloadURL);
                     setUrl(downloadURL)
@@ -99,7 +78,7 @@ export default function CreateBlog({ user }) {
                         </div>
                     </>}
                     <div className="form-group">
-                        <h1 className="text-center">Create Your Blog</h1>
+                        <h1 className="text-center"><u>Create Your Blog</u></h1>
                         <label className="form-label mt-4 ">Welcome to aBlogges!</label>
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" id="floatingInput" onChange={e => setTitle(e.target.value)} placeholder="name@example.com" />
